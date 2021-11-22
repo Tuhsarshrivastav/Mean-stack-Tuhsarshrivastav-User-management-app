@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usr of readUser">
+        <th scope="row">{{usr.id}}</th>
+        <td >{{usr.fullname}}</td>
+        <td>{{usr.email}}</td>
+        <td>{{usr.mobile}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
