@@ -60,7 +60,6 @@ app.get("/user/:id", (req, res) => {
   });
 });
 app.post("/user", (req, res) => {
-  
   let fullName = req.body.fullname;
   let eMail = req.body.email;
   let Mobile = req.body.mobile;
@@ -73,6 +72,38 @@ app.post("/user", (req, res) => {
     res.send({
       message: "craeted",
       data: results,
+    });
+  });
+});
+
+app.put("/user/:id", (req, res) => {
+  let uid = req.params.id;
+  let fullName = req.body.fullname;
+  let eMail = req.body.email;
+  let Mobile = req.body.mobile;
+
+  let qr = `update users set fullname = '${fullName}', email = '${eMail}' , mobile =' ${Mobile}' where id = ${uid}`;
+  db.query(qr, (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send({
+      message: "updated",
+      data: results,
+    });
+  });
+});
+
+app.delete("/user/:id", (req, res) => {
+  let uid = req.params.id;
+
+  let qr = `delete from users where id = '${uid}'`;
+  db.query(qr, (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send({
+      message: "deleted",
     });
   });
 });
