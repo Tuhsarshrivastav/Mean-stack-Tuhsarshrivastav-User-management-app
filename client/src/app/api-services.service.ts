@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiServicesService {
   apiUrl = 'http://localhost:5000/users'
   createapiUrl = 'http://localhost:5000/user'
+  deleteapiUrl = 'http://localhost:5000/user'
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<any> {
@@ -17,5 +18,9 @@ export class ApiServicesService {
   //create data
   createData(data: any): Observable<any> {
     return this.http.post(`${this.createapiUrl}`, data)
+  }
+  deleteData(id: any): Observable<any> {
+    let ids = id
+    return this.http.delete(`${this.deleteData}/${ids}`)
   }
 }
